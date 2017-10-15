@@ -13,17 +13,29 @@ require([
 ) {
 
   /**
-   * Focus the search widget when someone clicks
+   * Focus the search widget when someone clicks or uses the 'spacebar' or 'enter' keys
    * the "Skip to search" skip link.
    */
+  document.getElementById('skip-search').addEventListener('keypress', function (e) {
+    if (e.keyCode == 13 || e.keyCode == 32  || e.charCode == 32) {
+      search.focus();
+    }
+  });
+
   document.getElementById('skip-search').addEventListener('click', function (e) {
     search.focus();
   });
 
   /**
    * Focus the first focusable item in the list
-   * when someone clicks the "Skip to list" link
+   * when someone clicks or uses the 'spacebar' or 'enter' keys to the "Skip to list" link
    */
+  document.getElementById('skip-list').addEventListener('keypress', function (e) {
+    if (e.keyCode == 13 || e.keyCode == 32  || e.charCode == 32) {
+      focusFirstItemInList();
+    }
+  });
+
   document.getElementById('skip-list').addEventListener('click', function (e) {
     focusFirstItemInList();
   });
